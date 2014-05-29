@@ -4,56 +4,141 @@ import java.awt.event.*;
 import java.util.*;
 
 public class Kaleidoscope extends Applet {
-    Turtle kamekichi[] = new Turtle[4];
-    Rabbit usagi = new Rabbit(kamekichi);
-    int px, py;
-    double r;
-    double deg,deg2 = 0;
-    double length; 
-    boolean flag=false;
-    public void init() {
-	kamekichi[0] = new Turtle(300, 100,2,Color.black);
-	kamekichi[1] = new Turtle(100, 100,2,Color.black);
-	kamekichi[2] = new Turtle(100, 300,2,Color.black); 
-	kamekichi[3] = new Turtle(300, 300,2,Color.black);
-	kamekichi[1].turn(180);
-	kamekichi[2].turn(180);
-	px = 100;
-	py = 100;
-	addMouseListener(new MouseAdapter() {
-		public void mousePressed(MouseEvent e) {
-		    if (px<=e.getX() && e.getX()<=px+10 &&
-			py<=e.getY() && e.getY()<=py+10)
-			flag=true;
-		    
-		    repaint();
-		}
-		public void mouseReleased(MouseEvent e) {
-		    flag=false;
-		}
-	    }
-			 );
+  Turtle kamekichi[] = new Turtle[4];
+  Rabbit usagi = new Rabbit(kamekichi);
+  int px1, py1,px2, py2, px3, py3,px4, py4;;
+  double r;
+  double deg,deg2 = 0;
+  double length;
+  boolean flag1=false;
+  boolean flag2=false;
+  boolean flag3=false;
+  boolean flag4=false;
 
-	addMouseMotionListener(new MouseMotionAdapter() {
-		public void mouseDragged(MouseEvent e) {
-		    if (flag) {
-			double dy = e.getY()-py;
-			double dx = e.getX()-px;
-			r = Math.atan2(-dy,-dx);
-			deg = r * 180 / Math.PI;
-			usagi.turn(deg-deg2);
-			length = Math.sqrt(dy*dy + dx*dx);
-			usagi.move(length);
-			repaint();
-			px = e.getX();
-			py = e.getY();
-			deg2 = deg;
-		    }
-		}
-	    }			       
-			       );
-    }
-    public void paint(Graphics g) {
-	usagi.paint(g);
-    }
+  public void init() {
+    kamekichi[0] = new Turtle(300, 100,2,Color.black);
+    kamekichi[1] = new Turtle(100, 100,2,Color.black);
+    kamekichi[2] = new Turtle(100, 300,2,Color.black);
+    kamekichi[3] = new Turtle(300, 300,2,Color.black);
+    kamekichi[1].turn(180);
+    kamekichi[2].turn(180);
+    int[] a = new int[10];
+    px1 = 100;
+    py1 = 100;
+    px2 = 100;
+    py2 = 300;
+    px3 = 300;
+    py3 = 100;
+    px4 = 300;
+    py4 = 300;
+    addMouseListener(new MouseAdapter() {
+      public void mousePressed(MouseEvent e) {
+        if (px1<=e.getX() && e.getX()<=px1+10 && py1<=e.getY() && e.getY()<=py1+10){
+          flag1=true;
+          repaint();
+        }
+        if (px2<=e.getX() && e.getX()<=px2+10 && py2<=e.getY() && e.getY()<=py2+10){
+          flag2=true;
+          repaint();
+        }
+        if (px3<=e.getX() && e.getX()<=px3+10 && py3<=e.getY() && e.getY()<=py3+10){
+          flag3=true;
+          repaint();
+        }
+        if (px4<=e.getX() && e.getX()<=px4+10 && py4<=e.getY() && e.getY()<=py4+10){
+          flag4=true;
+          repaint();
+        }
+      }
+      public void mouseReleased(MouseEvent e) {
+        flag1=false;
+        flag2=false;
+        flag3=false;
+        flag4=false;
+      }
+    });
+    addMouseMotionListener(new MouseMotionAdapter() {
+      public void mouseDragged(MouseEvent e) {
+        if (flag1) {
+          double dy = e.getY()-py1;
+          double dx = e.getX()-px1;
+          r = Math.atan2(-dy,-dx);
+          deg = r * 180 / Math.PI;
+          usagi.turn(deg-deg2);
+          length = Math.sqrt(dy*dy + dx*dx);
+          usagi.move(length);
+          repaint();
+          px1 = e.getX();
+          py1 = e.getY();
+          px2 = e.getX();
+          py2 = (int)(py2 - dy);
+          px3 = (int)(px3 - dx);
+          py3 = e.getY();
+          px4 = (int)(px4 - dx);
+          py4 = (int)(py4 - dy);
+          deg2 = deg;
+        }
+        if (flag2) {
+          double dy = e.getY()-py2;
+          double dx = -(e.getX()-px2);
+          r = Math.atan2(-dy,-dx);
+          deg = r * 180 / Math.PI;
+          usagi.turn(deg-deg2);
+          length = -Math.sqrt(dy*dy + dx*dx);
+          usagi.move(length);
+          repaint();
+          px1 = e.getX();
+          py1 = (int)(py1 - dy);
+          px2 = e.getX();
+          py2 = e.getY();
+          px3 = (int)(px3 + dx);
+          py3 = (int)(py3 - dy);
+          px4 = (int)(px4 + dx);
+          py4 = e.getY();
+          deg2 = deg;
+        }
+        if (flag3) {
+          double dy = e.getY()-py3;
+          double dx = -(e.getX()-px3);
+          r = Math.atan2(-dy,-dx);
+          deg = r * 180 / Math.PI;
+          usagi.turn(deg-deg2);
+          length = Math.sqrt(dy*dy + dx*dx);
+          usagi.move(length);
+          repaint();
+          px1 = (int)(px1 + dx);
+          py1 = e.getY();
+          px2 = (int)(px2 + dx);
+          py2 = (int)(py2 - dy);
+          px3 = e.getX();
+          py3 = e.getY();
+          px4 = e.getX();
+          py4 = (int)(py4 - dy);
+          deg2 = deg;
+        }
+        if (flag4) {
+          double dy = -(e.getY()-py4);
+          double dx = -(e.getX()-px4);
+          r = Math.atan2(-dy,-dx);
+          deg = r * 180 / Math.PI;
+          usagi.turn(deg-deg2);
+          length = Math.sqrt(dy*dy + dx*dx);
+          usagi.move(length);
+          repaint();
+          px1 = (int)(px1 + dx);
+          py1 = (int)(py1 + dy);
+          px2 = (int)(px2 + dx);
+          py2 = e.getY();
+          px3 = e.getX();
+          py3 = (int)(py3 + dy);
+          px4 = e.getX();
+          py4 = e.getY();
+          deg2 = deg;
+        }
+      }
+    });
+  }
+  public void paint(Graphics g) {
+    usagi.paint(g);
+  }
 }

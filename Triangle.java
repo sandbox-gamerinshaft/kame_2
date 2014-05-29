@@ -13,24 +13,6 @@ public class Triangle extends Applet {
 
   }
 
-  void cabbage(Turtle t, int size){
-    int i,j;
-    for (i = 3; i <= 10; i++) {
-      j = 0;
-      while(i > j){
-        t.move(size);
-        t.turn(360.0/i);
-        j++;
-      }
-    }
-  }
-
-  void square(Turtle t) {
-    for (int i = 0; i < 4; i++) {
-      t.move(50);
-      t.turn(90);
-    }
-  }
   // 三角形の回転を行うメソッド
 
   void triangles(Turtle t, int n, int c, int d) {

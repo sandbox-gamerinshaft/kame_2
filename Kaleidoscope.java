@@ -6,7 +6,7 @@ import java.util.*;
 public class Kaleidoscope extends Applet {
   Turtle kamekichi[] = new Turtle[4];
   Rabbit usagi = new Rabbit(kamekichi);
-  int px1, py1,px2, py2, px3, py3,px4, py4;;
+  double px1, py1,px2, py2, px3, py3,px4, py4;;
   double r;
   double deg,deg2 = 0;
   double length;
@@ -16,10 +16,10 @@ public class Kaleidoscope extends Applet {
   boolean flag4=false;
 
   public void init() {
-    kamekichi[0] = new Turtle(300, 100,1,Color.black);
-    kamekichi[1] = new Turtle(100, 100,1,Color.RED);
-    kamekichi[2] = new Turtle(100, 300,1,Color.BLUE);
-    kamekichi[3] = new Turtle(300, 300,1,Color.GREEN);
+    kamekichi[0] = new Turtle(300, 100,3,Color.BLACK);
+    kamekichi[1] = new Turtle(100, 100,3,Color.BLACK);
+    kamekichi[2] = new Turtle(100, 300,3,Color.BLACK);
+    kamekichi[3] = new Turtle(300, 300,3,Color.BLACK);
     kamekichi[1].turn(180);
     kamekichi[2].turn(180);
     int[] a = new int[10];
@@ -71,11 +71,11 @@ public class Kaleidoscope extends Applet {
           px1 = e.getX();
           py1 = e.getY();
           px2 = e.getX();
-          py2 = (int)(py2 - dy);
-          px3 = (int)(px3 - dx);
+          py2 = py2 - dy;
+          px3 = px3 - dx;
           py3 = e.getY();
-          px4 = (int)(px4 - dx);
-          py4 = (int)(py4 - dy);
+          px4 = px4 - dx;
+          py4 = py4 - dy;
           deg2 = deg;
         }
         if (flag2) {
@@ -88,12 +88,12 @@ public class Kaleidoscope extends Applet {
           usagi.move(length);
           repaint();
           px1 = e.getX();
-          py1 = (int)(py1 - dy);
+          py1 = py1 - dy;
           px2 = e.getX();
           py2 = e.getY();
-          px3 = (int)(px3 + dx);
-          py3 = (int)(py3 - dy);
-          px4 = (int)(px4 + dx);
+          px3 = px3 + dx;
+          py3 = py3 - dy;
+          px4 = px4 + dx;
           py4 = e.getY();
           deg2 = deg;
         }
@@ -106,31 +106,31 @@ public class Kaleidoscope extends Applet {
           length = Math.sqrt(dy*dy + dx*dx);
           usagi.move(length);
           repaint();
-          px1 = (int)(px1 + dx);
+          px1 = px1 + dx;
           py1 = e.getY();
-          px2 = (int)(px2 + dx);
-          py2 = (int)(py2 - dy);
+          px2 = px2 + dx;
+          py2 = py2 - dy;
           px3 = e.getX();
           py3 = e.getY();
           px4 = e.getX();
-          py4 = (int)(py4 - dy);
+          py4 = py4 - dy;
           deg2 = deg;
         }
         if (flag4) {
           double dy = -(e.getY()-py4);
           double dx = -(e.getX()-px4);
           r = Math.atan2(-dy,-dx);
-          deg = r * 180 / Math.PI;
+          deg = r * 180.0 / Math.PI;
           usagi.turn(deg-deg2);
           length = Math.sqrt(dy*dy + dx*dx);
           usagi.move(length);
           repaint();
-          px1 = (int)(px1 + dx);
-          py1 = (int)(py1 + dy);
-          px2 = (int)(px2 + dx);
+          px1 = px1 + dx;
+          py1 = py1 + dy;
+          px2 = px2 + dx;
           py2 = e.getY();
           px3 = e.getX();
-          py3 = (int)(py3 + dy);
+          py3 = py3 + dy;
           px4 = e.getX();
           py4 = e.getY();
           deg2 = deg;

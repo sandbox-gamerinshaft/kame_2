@@ -17,9 +17,9 @@ public class Kaleidoscope extends Applet {
 
   public void init() {
     kamekichi[0] = new Turtle(300, 100,1,Color.black);
-    kamekichi[1] = new Turtle(100, 100,1,Color.RED);
-    kamekichi[2] = new Turtle(100, 300,1,Color.BLUE);
-    kamekichi[3] = new Turtle(300, 300,1,Color.GREEN);
+    kamekichi[1] = new Turtle(100, 100,1,Color.black);
+    kamekichi[2] = new Turtle(100, 300,1,Color.black);
+    kamekichi[3] = new Turtle(300, 300,1,Color.black);
     kamekichi[1].turn(180);
     kamekichi[2].turn(180);
     int[] a = new int[10];

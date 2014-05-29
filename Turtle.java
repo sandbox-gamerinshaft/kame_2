@@ -47,9 +47,9 @@ public class Turtle{
     for(int i=0; i<points.size()-1; i++){
       pt1 = points.get(i);
       pt2 = points.get(i+1);
+      g.setColor(pt1.color);
       BasicStroke wideStroke = new BasicStroke(pt1.size);
       g2.setStroke(wideStroke);
-      g.setColor(pt1.color);
       g.drawLine(pt1.x, pt1.y, pt2.x, pt2.y);
     }
   }

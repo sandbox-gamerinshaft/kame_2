@@ -10,7 +10,8 @@ public class Rabbit {
 
   public void paint(Graphics g){
     for (int i = 0; i < 4; i++){
-      g.fillRect(kame[i].getX(),kame[i].getY(),10,10);
+      g.setColor(Color.BLACK);
+      g.fillOval(kame[i].getX(),kame[i].getY(),10,10);
       kame[i].paint(g);
     }
   }
